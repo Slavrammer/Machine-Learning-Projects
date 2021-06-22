@@ -101,3 +101,9 @@ for dataset in combine:
 print(train_df[['Title','Survived']].groupby(['Title'], as_index=False).mean())
 
 # Categorical to ordinal conversion
+title_mapping = {'Mr' : 1, "Miss" : 2, "Mrs" : 3, "Master" : 4, "Rare" : 5}
+for dataset in combine:
+    dataset["Title"] = dataset['Title'].map(title_mapping)
+    dataset['Title'] = dataset['Title'].fillna(0)
+
+print(train_df.head(50))
